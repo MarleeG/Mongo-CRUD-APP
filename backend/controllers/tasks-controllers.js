@@ -17,4 +17,19 @@ const findAll = async (req, res, next) => {
   });
 };
 
+const createTask = async (req, res, next)=> {
+    let task;
+
+    try{
+        task = await db.create(req.body);
+    }catch(err){
+        return next(err);
+    }
+
+    res.status(201).json({
+        task: task.toObject({getters: false})
+    })
+}
+
 exports.findAll = findAll;
+exports.createTask = createTask;
