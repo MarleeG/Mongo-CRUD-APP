@@ -1,7 +1,13 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 const app = express();
+const routes = require('./routes');
+
+app.use(express.json());
+app.use(routes);
+
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -19,6 +25,15 @@ app.get("/", (req, res) => {
 // app.get("*", function(req, res) {
 //   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 // });
+
+// mongodb+srv://marlee:<password>@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb+srv://marlee:D4DLoKtp1YvJz85d@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority",
+  {
+    useCreateIndex: true,
+    useNewUrlParser: true
+  }
+)
 
 // if you comment this back and uncomment above then you must u
 app.get("*", function (req, res) {
