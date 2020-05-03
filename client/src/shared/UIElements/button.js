@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button }from 'react-bootstrap';
 
-
 const ReactBootButton = props => {
     return <Button 
         className="mt-5" 
