@@ -29,5 +29,13 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarleeG/Mongo-CRUD-APP.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarleeG/Mongo-CRUD-APP/issues"
+  },
+  "homepage": "https://github.com/MarleeG/Mongo-CRUD-APP#readme"
 }
