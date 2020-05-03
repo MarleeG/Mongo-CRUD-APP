@@ -16,14 +16,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/build"));
 }
 
-app.get("/", (req, res) => {
-  res.json({ status: "successful" });
-});
-
-// Send every request to the React app
-// Define any API routes before this runs
-// app.get("*", function(req, res) {
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"));
+// app.get("/", (req, res) => {
+//   res.json({ status: "successful" });
 // });
 
 // mongodb+srv://marlee:<password>@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority
@@ -35,10 +29,16 @@ mongoose.connect(
   }
 )
 
-// if you comment this back and uncomment above then you must u
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/index.html"));
+// Send every request to the React app
+// Define any API routes before this runs
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
+
+// if you comment this back and uncomment above
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, "../client/index.html"));
+// });
 
 app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

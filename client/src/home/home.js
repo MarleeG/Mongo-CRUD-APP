@@ -52,7 +52,6 @@ const Home = (props) => {
   };
 
   const addTask = async () => {
-    console.log("addingTask ", addingTask);
     let add = { task: addingTask };
 
     try {
