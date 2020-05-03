@@ -13,7 +13,7 @@ app.use(routes);
 if (process.env.NODE_ENV === "production") {
   // Original values
   // app.use(express.static("client/build"));
-  app.use(express.static("client/build"));
+  app.use(express.static(__dirname, "./client/build"));
 }
 
 // mongodb+srv://<user>:<password>@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority
