@@ -31,5 +31,39 @@ const createTask = async (req, res, next)=> {
     })
 }
 
+const deleteTask = async (req, res, next) => {
+  let taskId = req.params.id;
+
+  // let task = 
+
+  try{
+    await db.findOneAndDelete({_id: taskId});
+  }catch(err){
+    return next(err);
+  }
+
+  res.status(200).json({
+    message: "Task Deleted",
+  });
+}
+
+const updateTask = async (req, res, next)=> {
+  let taskId = req.params.id;
+  const filter = {_id: taskId};
+  const update = {fulfilled: true};
+
+  let task;
+
+  try{
+    task = await db.findOneAndUpdate(filter, update);
+  }catch(err){
+    return next(err);
+  }
+
+  res.status(200).json({task: task.toObject({getters: false})})
+}
+
 exports.findAll = findAll;
 exports.createTask = createTask;
+exports.deleteTask = deleteTask;
+exports.updateTask = updateTask;

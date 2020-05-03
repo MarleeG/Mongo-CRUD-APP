@@ -9,6 +9,8 @@ import API from "../util/API";
 import "./home.css";
 import ReactBootModal from "../shared/UIElements/modal";
 
+// let useForceUpdate = () => useState()[1];
+
 const Home = (props) => {
   const [allTasks, setTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -20,37 +22,53 @@ const Home = (props) => {
 
   const handleInputChange = (e) => {
     let { value } = e.target;
-
-    // value.trim()
-    // [name](value);
     updateAddingTask(value);
-
-    // console.log("name: ", name);
-    // console.log("value: ", addingTask);
-  };
-
-  const addTask = async () => {
-    console.log("addingTask ", addingTask);
-    let add = {task: addingTask};
-
-    try{
-        await API.createTask(add);
-    }catch(err){
-        throw err;
-    }
-
-
-    updateAddingTask("");
-    updateAppAlert({ show: true, variant: "success", text: "Task Added!" });
-    hideAlert();
-
-
   };
 
   const hideAlert = () => {
     setTimeout(() => {
       updateAppAlert({ show: false });
     }, 4000);
+  };
+
+  const updateTask = async (id) => {
+    try {
+      await API.completeTask(id);
+    } catch (err) {
+      throw err;
+    }
+
+    updateAppAlert({ show: true, variant: "success", text: "Task Complete" });
+    window.location.reload(true);
+  };
+
+  const deleteTask = async (id) => {
+    try {
+      await API.deleteTask(id);
+    } catch (err) {
+      throw err;
+    }
+
+    updateAppAlert({ show: true, variant: "success", text: "Task Deleted" });
+    window.location.reload(true);
+    // hideAlert();
+  };
+
+  const addTask = async () => {
+    console.log("addingTask ", addingTask);
+    let add = { task: addingTask };
+
+    try {
+      await API.createTask(add);
+    } catch (err) {
+      throw err;
+    }
+    updateAddingTask("");
+    updateAppAlert({ show: true, variant: "success", text: "Task Added!" });
+    hideAlert();
+
+    window.location.reload(true);
+
   };
 
   const getAllTasks = async () => {
@@ -80,7 +98,10 @@ const Home = (props) => {
       <Jumbotron className="jumbotron__container center">
         <Container>
           <h1>MONGO CRUD APP</h1>
-          <p>ADD DESCRIPTION HERE</p>
+          <p>
+            This application is a to do list built with React, Mongoose, MongoDB
+            Atlas, JavaScript & more!
+          </p>
           <ReactBootAlert
             show={appAlert.show}
             variant={appAlert.variant}
@@ -88,7 +109,11 @@ const Home = (props) => {
           />
           <hr />
           {/* Render here */}
-          <Tasks allTasks={allTasks} />
+          <Tasks
+            allTasks={allTasks}
+            deleteTask={deleteTask}
+            updateTask={updateTask}
+          />
 
           <ReactBootButton onClick={handleShowModal} />
         </Container>

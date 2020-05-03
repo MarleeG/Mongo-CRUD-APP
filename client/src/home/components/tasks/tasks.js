@@ -22,9 +22,9 @@ const Tasks = (props) => {
               {props.allTasks &&
                 props.allTasks.data.tasks
                   .filter((tsk) => tsk.fulfilled === false)
-                  .map((tsk, idx) => {
+                  .map(tsk => {
                     return (
-                      <ListItem text={tsk.task} key={tsk._id} act={true} />
+                      <ListItem text={tsk.task} key={tsk._id} act={true} id={tsk._id} update={props.updateTask}/>
                     );
                   })}
             </ListGroup>
@@ -38,7 +38,7 @@ const Tasks = (props) => {
                   .filter((tsk) => tsk.fulfilled === true)
                   .map(tsk => {
                     return (
-                      <ListItem text={tsk.task} key={tsk._id} act={false} />
+                      <ListItem text={tsk.task} key={tsk._id} id={tsk._id} act={false} delete={props.deleteTask}/>
                     );
                   })}
             </ListGroup>

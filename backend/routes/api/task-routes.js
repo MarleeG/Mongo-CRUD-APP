@@ -7,4 +7,8 @@ router.route('/api/all')
 .get(tasksControllers.findAll)
 .post(tasksControllers.createTask);
 
+router.route('/api/all/:id')
+.delete(tasksControllers.deleteTask)
+.put(tasksControllers.updateTask);
+
 module.exports = router;
