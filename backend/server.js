@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "production") {
 
 // mongodb+srv://marlee:<password>@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb+srv://marlee:D4DLoKtp1YvJz85d@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority",
+  process.env.MONGODB_URI || "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv",
   {
     useCreateIndex: true,
     useNewUrlParser: true
