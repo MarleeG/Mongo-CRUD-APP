@@ -21,7 +21,8 @@ mongoose.connect(
   process.env.MONGODB_URI || "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv",
   {
     useCreateIndex: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   }
 )
 
