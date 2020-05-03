@@ -3,21 +3,12 @@ import { Row, Col, ListGroup } from "react-bootstrap";
 import ListItem from "../../../shared/UIElements/list-item";
 
 const Tasks = (props) => {
-  // console.log(props.allTasks);
-  // if (props.allTasks.data) {
-  //   console.log(props.allTasks.data.tasks);
-  // }
   return (
     <Fragment>
       {props.allTasks.hasOwnProperty("data") && (
         <Row>
           <Col lg={6}>
             <h3>Tasks</h3>
-            {/* unfulfilled items */}
-
-            {/* {
-              props.allTasks.data.tasks
-            } */}
             <ListGroup>
               {props.allTasks &&
                 props.allTasks.data.tasks

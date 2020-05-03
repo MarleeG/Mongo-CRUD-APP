@@ -3,13 +3,11 @@ import { Jumbotron, Container } from "react-bootstrap";
 import Tasks from "./components/tasks/tasks";
 import ReactBootButton from "../shared/UIElements/button";
 import ReactBootAlert from "../shared/UIElements/alert";
+import ReactBootModal from "../shared/UIElements/modal";
 
 import API from "../util/API";
 
 import "./home.css";
-import ReactBootModal from "../shared/UIElements/modal";
-
-// let useForceUpdate = () => useState()[1];
 
 const Home = (props) => {
   const [allTasks, setTasks] = useState([]);
