@@ -79,7 +79,7 @@ const Home = (props) => {
 
   useEffect(() => {
     getAllTasks();
-  }, [API]);
+  }, []);
 
   return (
     <Fragment>

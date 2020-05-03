@@ -1,4 +1,4 @@
-import React, { useRef, Fragment } from "react";
+import React, { Fragment } from "react";
 import "./styles/input.css";
 
 const ReactBootInput = (props) => {
