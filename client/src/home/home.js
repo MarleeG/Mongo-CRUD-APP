@@ -38,8 +38,8 @@ const Home = (props) => {
       throw err;
     }
 
+    getAllTasks();
     updateAppAlert({ show: true, variant: "success", text: "Task Complete" });
-    window.location.reload(true);
   };
 
   const deleteTask = async (id) => {
@@ -49,9 +49,8 @@ const Home = (props) => {
       throw err;
     }
 
+    getAllTasks();
     updateAppAlert({ show: true, variant: "success", text: "Task Deleted" });
-    window.location.reload(true);
-    // hideAlert();
   };
 
   const addTask = async () => {
@@ -64,11 +63,10 @@ const Home = (props) => {
       throw err;
     }
     updateAddingTask("");
+
+    getAllTasks();
     updateAppAlert({ show: true, variant: "success", text: "Task Added!" });
     hideAlert();
-
-    window.location.reload(true);
-
   };
 
   const getAllTasks = async () => {
