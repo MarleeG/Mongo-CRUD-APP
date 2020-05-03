@@ -16,11 +16,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// app.get("/", (req, res) => {
-//   res.json({ status: "successful" });
-// });
-
-// mongodb+srv://marlee:<password>@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority
+// mongodb+srv://<user>:<password>@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv",
   {
