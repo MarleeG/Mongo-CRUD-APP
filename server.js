@@ -22,11 +22,11 @@ mongoose.connect(
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useMongoClient: true,
+    // useMongoClient: true,
   },
   function (err) {
     if (error) {
-      console.log("err", error);
+      console.log("err", err);
     } else {
       console.log("woohoo");
     }
