@@ -5,10 +5,6 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(routes);
-
 // mongodb+srv://<user>:<password>@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority
 // mongodb://heroku_dv0v87gv:ldeush022ljoseouqsfia1oh33@ds113942.mlab.com:13942/heroku_dv0v87gv
 
@@ -22,6 +18,10 @@ mongoose.connect(
     useUnifiedTopology: true,
   }
 );
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(routes);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
