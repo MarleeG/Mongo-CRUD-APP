@@ -9,16 +9,25 @@ const routes = require("./routes");
 // mongodb://heroku_dv0v87gv:ldeush022ljoseouqsfia1oh33@ds113942.mlab.com:13942/heroku_dv0v87gv
 // encodeURIComponent(process.env.MONGO_ATLAS_PW);
 
+// 2020-05-08T02:14:29.367251+00:00 app[web.1]:   MONGODB_URI: 'mongodb://heroku_dv0v87gv:ldeush022ljoseouqsfia1oh33@ds113942.mlab.com:13942/heroku_dv0v87gv',
 console.log('PROCESS:: ', process.env);
-mongoose.connect(
-  process.env.MONGODB_URI ||
-    "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv",
-  {
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+const URI = process.env.MONGODB_URI ||"mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv";
+// mongoose.connect(
+//   URI,
+//   {
+//     useCreateIndex: true,
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   }
+// );
+
+mongoose.connect(URI, {server: { poolSize: 10 }}, function(error) {
+	if (error) {
+                console.log("err", err);
+	} else {
+		console.log("woohoo");
+	}
+});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
