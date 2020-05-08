@@ -8,6 +8,7 @@ const routes = require("./routes");
 // mongodb+srv://<user>:<password>@cluster0-fgs8h.mongodb.net/mongo-crud?retryWrites=true&w=majority
 // mongodb://heroku_dv0v87gv:ldeush022ljoseouqsfia1oh33@ds113942.mlab.com:13942/heroku_dv0v87gv
 
+console.log('PROCESS:: ', process.env);
 mongoose.connect(
   process.env.MONGODB_URI ||
     "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv",
