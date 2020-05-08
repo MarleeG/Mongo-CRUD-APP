@@ -14,24 +14,33 @@ console.log("PROCESS:: ", process.env);
 const URI =
   process.env.MONGODB_URI ||
   "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv";
-mongoose.connect(
-  URI,
-  {
-    user: "heroku_dv0v87gv",
-    pass: "password1",
-    useCreateIndex: true,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    // useMongoClient: true,
-  },
-  function (err) {
-    if (error) {
-      console.log("err", err);
-    } else {
-      console.log("woohoo");
-    }
+
+const connect = async () => {
+  try {
+    await mongoose.connect(
+      URI,
+      {
+        user: "heroku_dv0v87gv",
+        pass: "password1",
+        useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        // useMongoClient: true,
+      },
+      function (err) {
+        if (err) {
+          console.log("err", err);
+        } else {
+          console.log("woohoo");
+        }
+      }
+    );
+  } catch (err) {
+    console.log("ERROR:: ", err);
   }
-);
+};
+
+connect();
 
 // mongoose.connect(URI, { server: { poolSize: 10 } }, function (error) {});
 
