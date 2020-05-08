@@ -10,7 +10,7 @@ const routes = require("./routes");
 // encodeURIComponent(process.env.MONGO_ATLAS_PW);
 
 // 2020-05-08T02:14:29.367251+00:00 app[web.1]:   MONGODB_URI: 'mongodb://heroku_dv0v87gv:ldeush022ljoseouqsfia1oh33@ds113942.mlab.com:13942/heroku_dv0v87gv',
-console.log("PROCESS:: ", process.env);
+// console.log("PROCESS:: ", process.env);
 const URI =
   process.env.MONGODB_URI ||
   "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv";
