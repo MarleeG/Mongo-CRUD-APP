@@ -1,6 +1,4 @@
-# UNDER CONSTRUCTION
-
-## Mongo-CRUD-APP
+# Mongo-CRUD-APP
 
 This is a CRUD (Create, Read, Update, Delete) to do list utilizing the technologies below. 
 
@@ -16,5 +14,4 @@ This is a CRUD (Create, Read, Update, Delete) to do list utilizing the technolog
 * [Semantic UI - Icons](https://semantic-ui.com/elements/icon.html)
 
 ## Deployed App
-Coming Soon
 * [Mongo-CRUD-App](https://mongo-crud-app-mg.herokuapp.com)

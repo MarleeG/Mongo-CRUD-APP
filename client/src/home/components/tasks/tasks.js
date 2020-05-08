@@ -22,7 +22,6 @@ const Tasks = (props) => {
           </Col>
           <Col lg={6}>
             <h3>Complete</h3>
-            {/* fulfilled items */}
             <ListGroup>
               {props.allTasks &&
                 props.allTasks.data.tasks

@@ -30,9 +30,7 @@ const createTask = async (req, res, next)=> {
 
 const deleteTask = async (req, res, next) => {
   let taskId = req.params.id;
-
-  // let task = 
-
+  
   try{
     await db.findOneAndDelete({_id: taskId});
   }catch(err){

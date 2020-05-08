@@ -9,7 +9,7 @@ import API from "../util/API";
 
 import "./home.css";
 
-const Home = (props) => {
+const Home = () => {
   const [allTasks, setTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [addingTask, updateAddingTask] = useState("");
@@ -103,13 +103,11 @@ const Home = (props) => {
             text={appAlert.text}
           />
           <hr />
-          {/* Render here */}
           <Tasks
             allTasks={allTasks}
             deleteTask={deleteTask}
             updateTask={updateTask}
           />
-
           <ReactBootButton onClick={handleShowModal} />
         </Container>
       </Jumbotron>
