@@ -6,40 +6,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 
-// const URI =
-//   process.env.MONGODB_URI ||
-//   "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv";
-
-// const connect = async () => {
-//   try {
-//     await mongoose.connect(
-//       URI,
-//       {
-//         user: "heroku_dv0v87gv",
-//         pass: "password1",
-//         useCreateIndex: true,
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//       },
-//       function (err) {
-//         if (err) {
-//           console.log("err", err);
-//         } else {
-//           console.log("woohoo");
-//         }
-//       }
-//     );
-//   } catch (err) {
-//     console.log("ERROR:: ", err);
-//   }
-// };
-
 const {DB_USER, DB_PASSWORD} = process.env;
 
 const URI = process.env.MONGODB_URI || `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.fgs8h.mongodb.net/mongo-crud-app-db?retryWrites=true&w=majority`;
-
-console.log(`DB USER: ${DB_USER}`);
-
 
 const connect = async () => {
   try {
@@ -77,7 +46,6 @@ app.use(routes);
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   // Original values
-  // app.use(express.static("client/build"));
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
