@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require('dotenv').config();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -33,7 +34,11 @@ const routes = require("./routes");
 //   }
 // };
 
-const URI = process.env.MONGODB_URI || "mongodb+srv://marlee:D4DLoKtp1YvJz85d@cluster0.fgs8h.mongodb.net/mongo-crud-app-db?retryWrites=true&w=majority";
+const {DB_USER, DB_PASSWORD} = process.env;
+
+const URI = process.env.MONGODB_URI || `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.fgs8h.mongodb.net/mongo-crud-app-db?retryWrites=true&w=majority`;
+
+console.log(process.env);
 
 
 const connect = async () => {
@@ -41,11 +46,12 @@ const connect = async () => {
     await mongoose.connect(
       URI,
       {
-        user: "marlee",
-        pass: "D4DLoKtp1YvJz85d",
+        user: DB_USER,
+        pass: DB_PASSWORD,
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useFindAndModify: false
       },
       function (err) {
         if (err) {
