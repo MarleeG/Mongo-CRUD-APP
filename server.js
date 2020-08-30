@@ -5,17 +5,44 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 
-const URI =
-  process.env.MONGODB_URI ||
-  "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv";
+// const URI =
+//   process.env.MONGODB_URI ||
+//   "mongodb://heroku_dv0v87gv:password1@ds113942.mlab.com:13942/heroku_dv0v87gv";
+
+// const connect = async () => {
+//   try {
+//     await mongoose.connect(
+//       URI,
+//       {
+//         user: "heroku_dv0v87gv",
+//         pass: "password1",
+//         useCreateIndex: true,
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//       },
+//       function (err) {
+//         if (err) {
+//           console.log("err", err);
+//         } else {
+//           console.log("woohoo");
+//         }
+//       }
+//     );
+//   } catch (err) {
+//     console.log("ERROR:: ", err);
+//   }
+// };
+
+const URI = process.env.MONGODB_URI || "mongodb+srv://marlee:D4DLoKtp1YvJz85d@cluster0.fgs8h.mongodb.net/mongo-crud-app-db?retryWrites=true&w=majority";
+
 
 const connect = async () => {
   try {
     await mongoose.connect(
       URI,
       {
-        user: "heroku_dv0v87gv",
-        pass: "password1",
+        user: "marlee",
+        pass: "D4DLoKtp1YvJz85d",
         useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -32,6 +59,8 @@ const connect = async () => {
     console.log("ERROR:: ", err);
   }
 };
+
+
 
 connect();
 
