@@ -6,9 +6,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const routes = require("./routes");
 
-const {DB_USER, DB_PASSWORD} = process.env;
+const {DB_USER, DB_PASSWORD, DB} = process.env;
 
-const URI = process.env.MONGODB_URI || `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.fgs8h.mongodb.net/mongo-crud-app-db?retryWrites=true&w=majority`;
+const URI = process.env.MONGODB_URI || `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.fgs8h.mongodb.net/${DB}?retryWrites=true&w=majority`;
 
 const connect = async () => {
   try {
